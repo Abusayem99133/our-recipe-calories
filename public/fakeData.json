@@ -1,6 +1,6 @@
 [
     {
-      "recipe_image": "https://example.com/chicken_curry.jpg",
+      "recipe_image": "https://iili.io/JWsNv4I.jpg",
       "recipe_id": "001",
       "recipe_name": "Chicken Curry",
       "short_description": "A flavorful chicken curry with aromatic spices.",
@@ -16,7 +16,7 @@
       "calories": "380 calories"
     },
     {
-      "recipe_image": "https://example.com/pasta_bolognese.jpg",
+      "recipe_image": "https://iili.io/JWsOiHF.jpg",
       "recipe_id": "002",
       "recipe_name": "Pasta Bolognese",
       "short_description": "Classic Italian pasta with rich meat sauce.",
@@ -32,7 +32,7 @@
       "calories": "420 calories"
     },
     {
-      "recipe_image": "https://example.com/vegetable_stir_fry.jpg",
+      "recipe_image": "https://iili.io/JWseKxf.jpg",
       "recipe_id": "003",
       "recipe_name": "Vegetable Stir Fry",
       "short_description": "A colorful stir fry with a mix of fresh vegetables.",
@@ -48,7 +48,7 @@
       "calories": "220 calories"
     },
     {
-      "recipe_image": "https://example.com/salmon_teriyaki.jpg",
+      "recipe_image": "https://iili.io/JWse4s4.jpg",
       "recipe_id": "004",
       "recipe_name": "Salmon Teriyaki",
       "short_description": "Grilled salmon glazed with savory teriyaki sauce.",
@@ -64,7 +64,7 @@
       "calories": "320 calories"
     },
     {
-      "recipe_image": "https://example.com/caesar_salad.jpg",
+      "recipe_image": "https://iili.io/JWsvzZb.jpg",
       "recipe_id": "005",
       "recipe_name": "Caesar Salad",
       "short_description": "A classic Caesar salad with crisp romaine lettuce and tangy dressing.",
@@ -80,7 +80,7 @@
       "calories": "180 calories"
     },
     {
-      "recipe_image": "https://example.com/fruit_smoothie.jpg",
+      "recipe_image": "https://iili.io/JWs8Kxa.jpg",
       "recipe_id": "006",
       "recipe_name": "Fruit Smoothie",
       "short_description": "A refreshing blend of mixed fruits for a nutritious smoothie.",
