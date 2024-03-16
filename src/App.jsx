@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 function App() {
   const [carts, setCarts] = useState([]);
   const [cart, setCart] = useState([]);
+  const [cCooking, setcCooking] = useState([]);
   useEffect(() => {
     fetch("./fakeData.json")
       .then((res) => res.json())
@@ -26,26 +27,32 @@ function App() {
   };
   // console.log(carts);
   const handlePreparing = (preparing) => {
+    const newCooking = cart.find((item) => item.recipe_id === preparing);
+
+    setcCooking([...cCooking, newCooking]);
     const newCart = cart.filter((item) => item.recipe_id !== preparing);
     setCart(newCart);
+    // console.log(preparing);
   };
 
   return (
     <div>
-      <div className="flex justify-around m-16">
-        <div className="flex space-x-80 justify-between items-center ">
+      <div className=" lg:flex justify-around m-16">
+        <div className="lg:flex space-x-80 justify-between items-center ">
           <div>
-            <h1 className="text-3xl font-bold">Recipe Calories</h1>
+            <h1 className="text-center text-2xl lg:text-3xl font-bold">
+              Recipe Calories
+            </h1>
           </div>
-          <div className="flex space-x-4">
+          <div className="hidden md:flex lg:flex space-x-4">
             <p>Home</p>
             <p>Recipes</p>
             <p>About</p>
             <p>Search</p>
           </div>
         </div>
-        <div className="flex items-center">
-          <div className="flex items-center bg-slate-300 p-2 rounded-full">
+        <div className="space-y-4 lg:flex items-center">
+          <div className=" flex items-center bg-slate-300 p-2 rounded-full">
             <div className="">
               <h3>
                 <HiOutlineMagnifyingGlass />
@@ -61,8 +68,8 @@ function App() {
               />
             </div>
           </div>
-          <div className="space-x-5">
-            <h3 className="bg-green-300 p-2 text-3xl rounded-full">
+          <div className="">
+            <h3 className="bg-green-300  lg:bg-green-300 p-2 lg:text-3xl rounded-full">
               <CgProfile />
             </h3>
           </div>
@@ -71,20 +78,28 @@ function App() {
       <div
         className="hero min-h-screen"
         style={{
-          backgroundImage:
-            "url(https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg)",
+          backgroundImage: "url(https://iili.io/JWpJiej.jpg)",
+          borderRadius: "24px",
+          width: "90%",
+          marginLeft: "110px",
         }}
       >
-        <div className="hero-overlay bg-opacity-60"></div>
+        <div className=" "></div>
         <div className="hero-content text-center text-neutral-content">
           <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
+            <h1 className="mb-5 text-5xl font-bold  ">personalized recipes</h1>
             <p className="mb-5">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
+              We use AI to automatically tag all of your recipes according to
+              nutrients, ingredients, food styles
             </p>
-            <button className="btn btn-primary">Get Started</button>
+            <div className="space-x-4">
+              <button className="bg-green-300 p-4 rounded-full text-black ">
+                Explore Now
+              </button>
+              <button className="border-2 rounded-full p-4">
+                Our Feedback
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -149,7 +164,7 @@ function App() {
                       <th>Calories</th>
                     </tr>
                   </thead>
-                  {cart.map((items, index) => (
+                  {cCooking.map((items, index) => (
                     <tr className="box" key={cart.recipe_id}>
                       <p>{index + 1}</p>
                       <td>{items.recipe_name}</td>
@@ -158,6 +173,7 @@ function App() {
                     </tr>
                   ))}
                 </table>
+                {/* {cCooking.reduce((c, t) => c.preparing_time + t, 0)} */}
               </div>
             </div>
             <hr />
