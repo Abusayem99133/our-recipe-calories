@@ -1,12 +1,12 @@
 import { CgProfile } from "react-icons/cg";
 import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
 
-import "./App.css";
 import Carts from "./Component/Carts/Carts";
 import { useEffect, useState } from "react";
 import Cart from "./Component/Carts/Cart/Cart";
-import { toast } from "react-toastify";
-
+import "./App.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function App() {
   const [carts, setCarts] = useState([]);
   const [cart, setCart] = useState([]);
@@ -16,19 +16,22 @@ function App() {
       .then((data) => setCarts(data));
   }, []);
   const handleAddCook = (cook) => {
-    const isExist = cart.find((c) => c.id == cook.id);
+    const isExist = cart.find((c) => c.recipe_id == cook.recipe_id);
     if (!isExist) {
+      // toast.error("Allow to one pcs Recipe...!");
       setCart([...cart, cook]);
+      toast.success("Recipe Added...!");
     } else {
-      alert("amr shonar bangla");
+      toast.warning("Recipe Already Added...!");
+      // alert("amr shonar bangla");
     }
   };
-  // console.log(carts);
+  console.log(carts);
   // const handlePreparing = (prepaird) => {
   //   const newCart = cart.filter((item) => item.id !== id);
   //   setCart(newCart);
   // };
-  console.log(cart);
+  // console.log(cart);
   return (
     <div>
       <div className="flex justify-around m-16">
@@ -101,31 +104,39 @@ function App() {
           {carts.map((c, idx) => (
             <Carts key={idx} cart={c} handleAddCook={handleAddCook}></Carts>
           ))}
-
-          {/* Ensure carts is an array before mapping over it */}
-          {/* {Array.isArray(carts) && carts.length > 0 ? (
-            carts.map((cart, idx) => (
-              <Carts
-                key={idx}
-                cart={cart}
-                handleAddCook={handleAddCook}
-              ></Carts>
-            ))
-          ) : ( */}
-          {/* // Handle the case when carts is not an array or is empty
-          //   <div>No carts available</div> */}
-          {/* // )} */}
         </div>
         <div className="mt-24 ">
           <div className="border-2 rounded-xl">
-            <h1 className="p-4 text-center text-3xl">Want to Cook</h1>
+            <h1 className="p-4 text-center text-3xl">Want to Cook: 0</h1>
             <hr />
 
-            <Cart></Cart>
+            <div className="overflow-x-auto">
+              <div className="flex justify-around">
+                <h3>Name</h3>
+                <h3>Time</h3>
+                <h3>Calories</h3>
+              </div>
+              <table className="table space-y-2 ">
+                {/* head */}
+
+                {cart.map((item, index) => (
+                  <tr key={item.recipe_id}>
+                    <p>{index + 1}</p>
+                    <td>{item.recipe_name}</td>
+                    <td>{item.preparing_time}</td>
+                    <td>{item.calories}</td>
+                    <button className="bg-green-400 px-4 py-2 rounded-full">
+                      Preparing
+                    </button>
+                  </tr>
+                ))}
+              </table>
+            </div>
             <hr />
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }

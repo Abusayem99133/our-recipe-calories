@@ -3,7 +3,14 @@ import { FaFire } from "react-icons/fa";
 import PropTypes from "prop-types";
 const Carts = ({ cart, handleAddCook }) => {
   // console.log(handleAddCook);
-  const { calories, ingredients, recipe_image, short_description } = cart;
+  const {
+    calories,
+    ingredients,
+    recipe_image,
+    short_description,
+    recipe_name,
+    preparing_time,
+  } = cart;
   //   console.log(cart);
   return (
     <div className="flex">
@@ -11,7 +18,7 @@ const Carts = ({ cart, handleAddCook }) => {
         {/* cart */}
         <div className="">
           <img className="w-64 rounded-lg mx-auto" src={recipe_image} alt="" />
-          <h3 className="text-[20px] font-semibold">{calories}</h3>
+          <h3 className="text-[20px] font-semibold">{recipe_name}</h3>
           <p>{short_description}</p>
           <hr className="p-4" />
           <h2 className="text-[18px] font-medium">Ingredients: 6</h2>
@@ -29,13 +36,13 @@ const Carts = ({ cart, handleAddCook }) => {
               <span>
                 <CiClock2 />
               </span>
-              <p>30 minutes</p>
+              <p>{preparing_time}</p>
             </div>
             <div className="flex items-center space-x-2">
               <span>
                 <FaFire />
               </span>
-              <p>600 calories</p>
+              <p>{calories}</p>
             </div>
           </div>
           <button
