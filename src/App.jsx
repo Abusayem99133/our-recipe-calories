@@ -4,17 +4,31 @@ import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
 import "./App.css";
 import Carts from "./Component/Carts/Carts";
 import { useEffect, useState } from "react";
+import Cart from "./Component/Carts/Cart/Cart";
+import { toast } from "react-toastify";
 
 function App() {
   const [carts, setCarts] = useState([]);
+  const [cart, setCart] = useState([]);
   useEffect(() => {
     fetch("./fakeData.json")
       .then((res) => res.json())
       .then((data) => setCarts(data));
   }, []);
   const handleAddCook = (cook) => {
-    console.log("cock in the cook", cook);
+    const isExist = cart.find((c) => c.id == cook.id);
+    if (!isExist) {
+      setCart([...cart, cook]);
+    } else {
+      alert("amr shonar bangla");
+    }
   };
+  // console.log(carts);
+  // const handlePreparing = (prepaird) => {
+  //   const newCart = cart.filter((item) => item.id !== id);
+  //   setCart(newCart);
+  // };
+  console.log(cart);
   return (
     <div>
       <div className="flex justify-around m-16">
@@ -84,52 +98,30 @@ function App() {
       </div>
       <div className="flex">
         <div className="grid grid-cols-2 space-x-4">
-          {carts.map((cart) => (
-            <Carts
-              key={carts.id}
-              cart={cart}
-              handleAddCook={handleAddCook}
-            ></Carts>
+          {carts.map((c, idx) => (
+            <Carts key={idx} cart={c} handleAddCook={handleAddCook}></Carts>
           ))}
+
+          {/* Ensure carts is an array before mapping over it */}
+          {/* {Array.isArray(carts) && carts.length > 0 ? (
+            carts.map((cart, idx) => (
+              <Carts
+                key={idx}
+                cart={cart}
+                handleAddCook={handleAddCook}
+              ></Carts>
+            ))
+          ) : ( */}
+          {/* // Handle the case when carts is not an array or is empty
+          //   <div>No carts available</div> */}
+          {/* // )} */}
         </div>
         <div className="mt-24 ">
           <div className="border-2 rounded-xl">
-            <div className="overflow-x-auto">
-              <table className="table">
-                {/* head */}
-                <thead>
-                  <tr>
-                    <th></th>
-                    <th>Name</th>
-                    <th>Job</th>
-                    <th>Favorite Color</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {/* row 1 */}
-                  <tr>
-                    <th>1</th>
-                    <td>Cy Ganderton</td>
-                    <td>Quality Control Specialist</td>
-                    <td>Blue</td>
-                  </tr>
-                  {/* row 2 */}
-                  <tr>
-                    <th>2</th>
-                    <td>Hart Hagerty</td>
-                    <td>Desktop Support Technician</td>
-                    <td>Purple</td>
-                  </tr>
-                  {/* row 3 */}
-                  <tr>
-                    <th>3</th>
-                    <td>Brice Swyre</td>
-                    <td>Tax Accountant</td>
-                    <td>Red</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+            <h1 className="p-4 text-center text-3xl">Want to Cook</h1>
+            <hr />
+
+            <Cart></Cart>
             <hr />
           </div>
         </div>

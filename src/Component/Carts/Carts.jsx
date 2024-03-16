@@ -2,7 +2,7 @@ import { CiClock2 } from "react-icons/ci";
 import { FaFire } from "react-icons/fa";
 import PropTypes from "prop-types";
 const Carts = ({ cart, handleAddCook }) => {
-  //   console.log(handleAddCook);
+  // console.log(handleAddCook);
   const { calories, ingredients, recipe_image, short_description } = cart;
   //   console.log(cart);
   return (
@@ -52,7 +52,8 @@ const Carts = ({ cart, handleAddCook }) => {
   );
 };
 Carts.propTypes = {
-  cart: PropTypes.array,
+  Carts: PropTypes.func,
+  cart: PropTypes.object,
   handleAddCook: PropTypes.func,
 };
 export default Carts;
