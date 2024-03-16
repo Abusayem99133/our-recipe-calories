@@ -1,5 +1,6 @@
-const Cart = () => {
-  return <div></div>;
-};
+// const Cart = ({ card }) => {
+//   // console.log(card);
+//   return <div></div>;
+// };
 
-export default Cart;
+// export default Cart;

@@ -5,3 +5,10 @@
     background-position: center;
     
 }
+.box{
+    box-shadow: 5px 5px 8px gray;
+}
+
+.cart{
+    box-shadow: 4px 4px 6px gray;
+}

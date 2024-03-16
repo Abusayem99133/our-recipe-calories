@@ -3,7 +3,6 @@ import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
 
 import Carts from "./Component/Carts/Carts";
 import { useEffect, useState } from "react";
-import Cart from "./Component/Carts/Cart/Cart";
 import "./App.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -18,20 +17,19 @@ function App() {
   const handleAddCook = (cook) => {
     const isExist = cart.find((c) => c.recipe_id == cook.recipe_id);
     if (!isExist) {
-      // toast.error("Allow to one pcs Recipe...!");
-      setCart([...cart, cook]);
       toast.success("Recipe Added...!");
+
+      setCart([...cart, cook]);
     } else {
-      toast.warning("Recipe Already Added...!");
-      // alert("amr shonar bangla");
+      toast.warn("Already exist...!");
     }
   };
-  console.log(carts);
-  // const handlePreparing = (prepaird) => {
-  //   const newCart = cart.filter((item) => item.id !== id);
-  //   setCart(newCart);
-  // };
-  // console.log(cart);
+  // console.log(carts);
+  const handlePreparing = (preparing) => {
+    const newCart = cart.filter((item) => item.recipe_id !== preparing);
+    setCart(newCart);
+  };
+
   return (
     <div>
       <div className="flex justify-around m-16">
@@ -99,18 +97,19 @@ function App() {
           </p>
         </div>
       </div>
-      <div className="flex">
+      <div className="flex justify-around">
         <div className="grid grid-cols-2 space-x-4">
           {carts.map((c, idx) => (
             <Carts key={idx} cart={c} handleAddCook={handleAddCook}></Carts>
           ))}
         </div>
         <div className="mt-24 ">
-          <div className="border-2 rounded-xl">
-            <h1 className="p-4 text-center text-3xl">Want to Cook: 0</h1>
-            <hr />
-
+          <div className="border-2 p-8 rounded-xl">
             <div className="overflow-x-auto">
+              <h1 className="p-4 text-center text-3xl">
+                Want to Cook: {cart.length}
+              </h1>
+              <hr />
               <div className="flex justify-around">
                 <h3>Name</h3>
                 <h3>Time</h3>
@@ -120,17 +119,46 @@ function App() {
                 {/* head */}
 
                 {cart.map((item, index) => (
-                  <tr key={item.recipe_id}>
+                  <tr className=" box" key={item.recipe_id}>
                     <p>{index + 1}</p>
                     <td>{item.recipe_name}</td>
                     <td>{item.preparing_time}</td>
                     <td>{item.calories}</td>
-                    <button className="bg-green-400 px-4 py-2 rounded-full">
+                    <hr />
+                    <button
+                      onClick={() => handlePreparing(item.recipe_id)}
+                      className="bg-green-400 px-4 py-2 rounded-full"
+                    >
                       Preparing
                     </button>
                   </tr>
                 ))}
               </table>
+              <div className="overflow-x-auto mt-16">
+                <h1 className="text-center text-3xl">
+                  Currently cooking:{cart.length}
+                </h1>
+                <hr className="mt-6" />
+                <table className="table">
+                  {/* head */}
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Name</th>
+                      <th>Time</th>
+                      <th>Calories</th>
+                    </tr>
+                  </thead>
+                  {cart.map((items, index) => (
+                    <tr className="box" key={cart.recipe_id}>
+                      <p>{index + 1}</p>
+                      <td>{items.recipe_name}</td>
+                      <td>{items.preparing_time}</td>
+                      <td>{items.calories}</td>
+                    </tr>
+                  ))}
+                </table>
+              </div>
             </div>
             <hr />
           </div>

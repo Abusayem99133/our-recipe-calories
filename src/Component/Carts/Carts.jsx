@@ -14,12 +14,12 @@ const Carts = ({ cart, handleAddCook }) => {
   //   console.log(cart);
   return (
     <div className="flex">
-      <div className="bg-slate-100 mt-16 p-6 rounded-lg">
+      <div className="bg-slate-100 mt-16 p-6 rounded-lg cart">
         {/* cart */}
         <div className="">
           <img className="w-64 rounded-lg mx-auto" src={recipe_image} alt="" />
           <h3 className="text-[20px] font-semibold">{recipe_name}</h3>
-          <p>{short_description}</p>
+          <p>{short_description.slice(0, 40)}</p>
           <hr className="p-4" />
           <h2 className="text-[18px] font-medium">Ingredients: 6</h2>
           <ul>
