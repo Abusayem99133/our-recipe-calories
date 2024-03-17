@@ -25,7 +25,7 @@ function App() {
       toast.warn("Already exist...!");
     }
   };
-  // console.log(carts);
+
   const handlePreparing = (preparing) => {
     const newCooking = cart.find((item) => item.recipe_id === preparing);
 
@@ -33,7 +33,6 @@ function App() {
     const newCart = cart.filter((item) => item.recipe_id !== preparing);
     setCart(newCart);
   };
-  // console.log(cCooking);
 
   return (
     <div>
@@ -129,8 +128,6 @@ function App() {
                 <h3>Calories</h3>
               </div>
               <table className="table space-y-2 ">
-                {/* head */}
-
                 {cart.map((item, index) => (
                   <tr className=" box" key={item.recipe_id}>
                     <p>{index + 1}</p>
@@ -153,7 +150,6 @@ function App() {
                 </h1>
                 <hr className="mt-6" />
                 <table className="table">
-                  {/* head */}
                   <thead>
                     <tr>
                       <th></th>

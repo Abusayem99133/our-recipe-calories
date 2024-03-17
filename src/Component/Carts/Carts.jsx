@@ -2,7 +2,6 @@ import { CiClock2 } from "react-icons/ci";
 import { FaFire } from "react-icons/fa";
 import PropTypes from "prop-types";
 const Carts = ({ cart, handleAddCook }) => {
-  // console.log(handleAddCook);
   const {
     calories,
     ingredients,
@@ -11,11 +10,10 @@ const Carts = ({ cart, handleAddCook }) => {
     recipe_name,
     preparing_time,
   } = cart;
-  //   console.log(cart);
+
   return (
     <div className="flex">
       <div className="bg-slate-100 mt-16 p-6 rounded-lg cart">
-        {/* cart */}
         <div className="">
           <img className="w-64 rounded-lg mx-auto" src={recipe_image} alt="" />
           <h3 className="text-[20px] font-semibold">{recipe_name}</h3>
@@ -52,8 +50,6 @@ const Carts = ({ cart, handleAddCook }) => {
             Want to Cook
           </button>
         </div>
-        {/* site */}
-        <div className=""></div>
       </div>
     </div>
   );
