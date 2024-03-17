@@ -22,7 +22,7 @@ const Carts = ({ cart, handleAddCook }) => {
           <p>{short_description.slice(0, 40)}</p>
           <hr className="p-4" />
           <h2 className="text-[18px] font-medium">Ingredients: 6</h2>
-          <ol className="">
+          <ol className="list-disc">
             <li>{ingredients[0]}</li>
             <li>{ingredients[1]}</li>
             <li>{ingredients[2]}</li>
