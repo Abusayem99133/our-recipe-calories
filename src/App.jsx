@@ -32,26 +32,24 @@ function App() {
     setcCooking([...cCooking, newCooking]);
     const newCart = cart.filter((item) => item.recipe_id !== preparing);
     setCart(newCart);
-    // console.log(preparing);
   };
+  // console.log(cCooking);
 
   return (
     <div>
-      <div className=" lg:flex justify-around m-16">
-        <div className="lg:flex space-x-80 justify-between items-center ">
+      <div className="  flex justify-around m-16">
+        <div className="flex space-x-80 justify-between items-center ">
           <div>
-            <h1 className="text-center text-2xl lg:text-3xl font-bold">
-              Recipe Calories
-            </h1>
+            <h1 className=" text-3xl font-bold">Recipe Calories</h1>
           </div>
-          <div className="hidden md:flex lg:flex space-x-4">
+          <div className="flex space-x-4">
             <p>Home</p>
             <p>Recipes</p>
             <p>About</p>
             <p>Search</p>
           </div>
         </div>
-        <div className="space-y-4 lg:flex items-center">
+        <div className="flex items-center">
           <div className=" flex items-center bg-slate-300 p-2 rounded-full">
             <div className="">
               <h3>
@@ -69,7 +67,7 @@ function App() {
             </div>
           </div>
           <div className="">
-            <h3 className="bg-green-300  lg:bg-green-300 p-2 lg:text-3xl rounded-full">
+            <h3 className="bg-green-300 p-2 text-3xl rounded-full">
               <CgProfile />
             </h3>
           </div>
@@ -86,7 +84,7 @@ function App() {
       >
         <div className=" "></div>
         <div className="hero-content text-center text-neutral-content">
-          <div className="max-w-md">
+          <div className="max-w-xl">
             <h1 className="mb-5 text-5xl font-bold  ">personalized recipes</h1>
             <p className="mb-5">
               We use AI to automatically tag all of your recipes according to
@@ -107,8 +105,8 @@ function App() {
         <div className="text-center">
           <h1 className="text-3xl font-semibold mb-2">Our Recipes</h1>
           <p>
-            Located in the heart of Baltimore’s Arbutus neighborhood, Our
-            Recipes Cafe is a nostalgic blend of coffee house vibes
+            Located in the heart of Baltimore Arbutus neighborhood, Our Recipes
+            Cafe is a nostalgic blend of coffee house vibes
           </p>
         </div>
       </div>
@@ -151,7 +149,7 @@ function App() {
               </table>
               <div className="overflow-x-auto mt-16">
                 <h1 className="text-center text-3xl">
-                  Currently cooking:{cart.length}
+                  Currently cooking:{cCooking.length}
                 </h1>
                 <hr className="mt-6" />
                 <table className="table">
@@ -173,7 +171,12 @@ function App() {
                     </tr>
                   ))}
                 </table>
-                {/* {cCooking.reduce((c, t) => c.preparing_time + t, 0)} */}
+                <div className="mt-8">
+                  {cCooking.reduce(
+                    (c, t) => c + parseInt(t.preparing_time.split(" ")[0]),
+                    0
+                  )}
+                </div>
               </div>
             </div>
             <hr />

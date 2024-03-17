@@ -22,14 +22,14 @@ const Carts = ({ cart, handleAddCook }) => {
           <p>{short_description.slice(0, 40)}</p>
           <hr className="p-4" />
           <h2 className="text-[18px] font-medium">Ingredients: 6</h2>
-          <ul>
+          <ol className="">
             <li>{ingredients[0]}</li>
             <li>{ingredients[1]}</li>
             <li>{ingredients[2]}</li>
             <li>{ingredients[3]}</li>
             <li>{ingredients[4]}</li>
             <li>{ingredients[5]}</li>
-          </ul>
+          </ol>
           <hr className="p-4" />
           <div className="flex justify-between">
             <div className="flex items-center space-x-2">
